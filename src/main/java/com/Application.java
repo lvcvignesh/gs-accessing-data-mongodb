@@ -1,5 +1,6 @@
 package com;
 
+import com.cabcompany.repository.CustomerRepository;
 import com.cabcompany.repository.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -9,20 +10,21 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
-
 	@Autowired
-	private DriverRepository repository;
-    @Autowired
-    private MongoTemplate template;
+	private CustomerRepository customerRepository;
+	@Autowired
+	private DriverRepository driverRepository;
+	@Autowired
+	private MongoTemplate template;
  	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
- /*
-        repository.deleteAll();
-        repository.save(new Driver("Driver1","Phoenix Marketcity, Chennai, Tamil Nadu","Tata Indica","TN01AA0001","Mini"));
+
+/*        repository.deleteAll();
+		repository.save(new Driver("Driver1","Phoenix Marketcity, Chennai, Tamil Nadu","Tata Indica","TN01AA0001","Mini"));
         repository.save(new Driver("Driver2","Guru Nanak Matriculation Higher Secondary School, Velachery, Anna Garden, Velachery, Chennai, Tamil Nadu 600042","Tata Indica","TN01AA0002","Mini"));
         repository.save(new Driver("Driver3","Velachery Gate,IIT Madras,Chennai, Tamil Nadu","Tata Indica","TN01AA0003","Mini"));
         repository.save(new Driver("Driver4","Gandhi Mandapam,Chennai 600042","Tata Indica","TN01AA0004","Mini"));
