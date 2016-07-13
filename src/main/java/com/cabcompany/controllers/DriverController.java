@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @RestController
 @CrossOrigin
 public class DriverController {
@@ -24,7 +25,7 @@ public class DriverController {
     private DriverRepository repository;
 
     @RequestMapping(value = "/drivers", method = RequestMethod.GET)
-    public List<Driver> getAll(){
+    public List<Driver> getAll() {
         return repository.findAll();
     }
 
@@ -56,8 +57,8 @@ public class DriverController {
 
     @RequestMapping("/drivers/near")
     public List<GeoJsonPoint> getDriversNearby(@RequestParam("lat") String lat, @RequestParam("lng") String lng, @RequestParam("distance") String distance) {
-        Point p=new Point(Double.parseDouble(lng),Double.parseDouble(lat));
-        Query query = Query.query(Criteria.where("currentLocation").withinSphere(new Circle(p, new Distance(Double.parseDouble(distance),Metrics.KILOMETERS).getNormalizedValue())));
+        Point p = new Point(Double.parseDouble(lng), Double.parseDouble(lat));
+        Query query = Query.query(Criteria.where("currentLocation").withinSphere(new Circle(p, new Distance(Double.parseDouble(distance), Metrics.KILOMETERS).getNormalizedValue())));
         List<GeoJsonPoint> geoJsonPoints = new ArrayList<>();
         for (Driver driver : mongoTemplate.find(query, Driver.class))
             geoJsonPoints.add(driver.getCurrentLocation());

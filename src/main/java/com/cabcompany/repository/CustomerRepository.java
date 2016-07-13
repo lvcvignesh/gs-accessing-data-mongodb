@@ -14,6 +14,5 @@ import java.util.List;
  */
 public interface CustomerRepository extends MongoRepository<Customer, String> {
     Customer findByname(String name);
-
     Customer findById(String name);
 }

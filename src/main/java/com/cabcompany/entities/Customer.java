@@ -19,12 +19,21 @@ public class Customer {
     private String name;
     private StatusConstants.CustomerStatus customerStatus;
     private String CurrentTripID;
-    private String ResidentialAddress;
-    private GeoJsonPoint residentialAddressLocation;
+    private String mobileNo;
+
     // private String CustomerImage; - Base64 Encoded String LATER, BUT NEEDED
     @GeoSpatialIndexed(type = GeoSpatialIndexType.GEO_2DSPHERE)
     private GeoJsonPoint currentLocation;
     private boolean locationIntegrity;
+
+    public Customer() {
+    }
+
+    public Customer(String name, String mobileNo) {
+        setName(name);
+        setMobileNo(mobileNo);
+        setLocationIntegrity(false);
+    }
 
     public String getId() {
         return id;
@@ -58,22 +67,6 @@ public class Customer {
         CurrentTripID = currentTripID;
     }
 
-    public String getResidentialAddress() {
-        return ResidentialAddress;
-    }
-
-    public void setResidentialAddress(String residentialAddress) {
-        ResidentialAddress = residentialAddress;
-    }
-
-    public GeoJsonPoint getResidentialAddressLocation() {
-        return residentialAddressLocation;
-    }
-
-    public void setResidentialAddressLocation(GeoJsonPoint residentialAddressLocation) {
-        this.residentialAddressLocation = residentialAddressLocation;
-    }
-
     public GeoJsonPoint getCurrentLocation() {
         return currentLocation;
     }
@@ -88,6 +81,14 @@ public class Customer {
 
     public void setLocationIntegrity(boolean locationIntegrity) {
         this.locationIntegrity = locationIntegrity;
+    }
+
+    public String getMobileNo() {
+        return mobileNo;
+    }
+
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
     }
 
 }
