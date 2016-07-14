@@ -19,6 +19,15 @@ public class Trip {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Calendar requesttimestamp;
 
+    public Trip() {
+    }
+
+    public Trip(String requestID, String customerID, String driverID, GeoJsonPoint startLocation) {
+        setRequestID(requestID);
+        setCustomerID(customerID);
+        setDriverID(driverID);
+        setStartLocation(startLocation);
+    }
     public String getId() {
         return id;
     }

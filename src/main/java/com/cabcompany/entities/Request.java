@@ -1,7 +1,8 @@
 package com.cabcompany.entities;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+
+import java.util.Calendar;
 
 /**
  * Created by Kishan on 7/11/2016.
@@ -12,6 +13,21 @@ public class Request {
     private String cusomertID;
     private GeoJsonPoint startLocation;
     private GeoJsonPoint endLocation;
+    private Long distance;
+
+    public Request() {
+    }
+
+    public Request(String customerID, GeoJsonPoint startLocation, GeoJsonPoint endLocation) {
+        setCusomertID(customerID);
+        setStartLocation(startLocation);
+        setEndLocation(endLocation);
+    }
+
+    public Request(String cusomertID, GeoJsonPoint startLocation) {
+        setCusomertID(cusomertID);
+        setStartLocation(startLocation);
+    }
 
     public String getId() {
         return id;
@@ -20,18 +36,6 @@ public class Request {
     public void setId(String id) {
         this.id = id;
     }
-
-    public Long getRequestTimeStamp() {
-
-        return requestTimeStamp;
-    }
-
-    public void setRequestTimeStamp(Long requestTimeStamp) {
-        this.requestTimeStamp = requestTimeStamp;
-    }
-
-    private Long requestTimeStamp;
-    private Long distance;
 
     public String getCusomertID() {
         return cusomertID;
