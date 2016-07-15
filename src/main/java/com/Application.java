@@ -12,18 +12,19 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
-	@Autowired
-	private CustomerRepository customerRepository;
-	@Autowired
-	private DriverRepository driverRepository;
-	@Autowired
-	private MongoTemplate template;
- 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    @Autowired
+    private CustomerRepository customerRepository;
+    @Autowired
+    private DriverRepository driverRepository;
+    @Autowired
+    private MongoTemplate template;
 
-	@Override
-	public void run(String... args) throws Exception {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
 
         /*driverRepository.deleteAll();
         driverRepository.save(new Driver("Driver1", "Phoenix Marketcity, Chennai, Tamil Nadu", "Tata Indica", "TN01AA0001", "Mini"));

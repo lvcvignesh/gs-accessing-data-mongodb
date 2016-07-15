@@ -46,13 +46,13 @@ public class DriverController {
         return driver;
     }
 
-    @RequestMapping(value = "/drivers/{driverID}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/drivers/{driverID}", method = RequestMethod.POST)
     public Driver updateDriver(@PathVariable("id") String id, @RequestBody Driver driver) {
         repository.save(driver);
         return driver;
     }
 
-    @RequestMapping(value = "/drivers/{driverID}/location", method = RequestMethod.PUT)
+    @RequestMapping(value = "/drivers/{driverID}/location", method = RequestMethod.GET)
     public Driver updateLocation(@PathVariable("driverID") String id, @RequestParam("lat") Double lat, @RequestParam("lng") Double lng) {
         Driver driver = repository.findById(id);
         driver.setCurrentLocation(new GeoJsonPoint(lng, lat));
